@@ -2,10 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"cfar_processing": "radardsp.ipynb"}
+index = {"cfar_processing": "01_radardsp.ipynb"}
 
-modules = ["h5dataset.py",
-           "radardsp.py"]
+modules = ["radardsp.py",
+           "h5dataset.py",
+           "geometry.py"]
 
 doc_url = "https://moodoki.github.io/radicalsdk/"
 
