@@ -2,7 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"cfar_processing": "01_radardsp.ipynb"}
+index = {"cfar_processing": "01_radardsp.ipynb",
+         "PolarToCartesianWarp": "03_geometry.ipynb"}
 
 modules = ["radardsp.py",
            "h5dataset.py",
