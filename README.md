@@ -22,10 +22,11 @@ Bug reports are very much appreciated.
 `python -m pip install git+https://github.com/moodoki/radical_sdk.git`
 
 ## How to use
+> Dataset is currently under review and will be made available soon.
 
 Download the dataset at our [project page](https://publish.illinois.edu/radicaldata/).
+A small sample to try things our can be found [here]().
 
-A smaller sample to try things our can be found [here]().
 
 ```python
 #skip
