@@ -30,5 +30,5 @@ A smaller sample to try things our can be found [here]().
 ```python
 import radicalsdk.h5dataset
 
-dataset = radicalsdk.h5dataset.
+dataset = radicalsdk.h5dataset.H5DatasetLoader('../indoor_sample.h5')
 ```
