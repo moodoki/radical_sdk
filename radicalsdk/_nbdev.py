@@ -12,12 +12,14 @@ index = {"cfar_processing": "01_radardsp.ipynb",
          "chirp_to_dict": "04_radarcfg_v1.ipynb",
          "power_to_dict": "04_radarcfg_v1.ipynb",
          "frameStr_to_dict": "04_radarcfg_v1.ipynb",
-         "adcStr_to_dict": "04_radarcfg_v1.ipynb"}
+         "adcStr_to_dict": "04_radarcfg_v1.ipynb",
+         "RadarFrame": "05_radarv1.ipynb"}
 
 modules = ["radardsp.py",
            "h5dataset.py",
            "geometry.py",
-           "radar/config_v1.py"]
+           "radar/config_v1.py",
+           "radar/v1.py"]
 
 doc_url = "https://moodoki.github.io/radicalsdk/"
 

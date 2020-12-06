@@ -22,6 +22,9 @@ entries:
       title: radar.config_v1
       url: radarcfg_v1.html
     - output: web,pdf
+      title: radar.v1
+      url: radarv1.html
+    - output: web,pdf
       title: Developer notes
       url: DeveloperNotes.html
     - output: web,pdf
