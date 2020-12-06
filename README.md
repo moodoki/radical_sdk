@@ -24,3 +24,7 @@ Bug reports are very much appreciated.
 Download the dataset at our [project page](https://publish.illinois.edu/radicaldata/).
 
 A smaller sample to try things our can be found [here]().
+
+```python
+import radicalsdk
+```
