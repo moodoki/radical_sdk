@@ -30,7 +30,7 @@ A smaller sample to try things our can be found [here]().
 ```python
 #skip
 
-import matplotlib.pyplot as plt
+
 from radicalsdk.h5dataset import H5DatasetLoader
 
 data = H5DatasetLoader('../samples/indoor_sample.h5')
