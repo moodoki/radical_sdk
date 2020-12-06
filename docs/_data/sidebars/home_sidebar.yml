@@ -10,11 +10,14 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
+      title: Title
+      url: radardsp.html
+    - output: web,pdf
       title: module name here
       url: h5dataset.html
     - output: web,pdf
-      title: Title
-      url: radardsp.html
+      title: Geometry
+      url: geometry.html
     output: web
     title: radicalsdk
   output: web
