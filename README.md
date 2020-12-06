@@ -12,7 +12,7 @@ Bug reports are very much appreciated.
 # TODO
 
  - [ ] Radar config reader
- - [ ] Read from aligned H5 dataset
+ - [x] Read from aligned H5 dataset
  - [ ] Read from raw bags (to produce aligned/unaligned H5 datasets)
  - [x] Polar to Cartesian Projection
  - [ ] Camera/Radar coordinate transforms
@@ -28,7 +28,29 @@ Download the dataset at our [project page](https://publish.illinois.edu/radicald
 A smaller sample to try things our can be found [here]().
 
 ```python
-import radicalsdk.h5dataset
+#skip
 
-dataset = radicalsdk.h5dataset.H5DatasetLoader('../indoor_sample.h5')
+import matplotlib.pyplot as plt
+from radicalsdk.h5dataset import H5DatasetLoader
+
+data = H5DatasetLoader('../samples/indoor_sample.h5')
+
+
+frame_idx = 1
+plt.figure()
+plt.imshow(data['rgb'][frame_idx])
+plt.title(f'RGB frame {frame_idx}@{data["rgb_timestamp"][frame_idx]}')
+plt.show()
+plt.figure()
+plt.imshow(data['depth'][frame_idx])
+plt.title(f'Depth frame {frame_idx}@{data["depth_timestamp"][frame_idx]}')
+plt.show()
 ```
+
+
+![png](docs/images/output_6_0.png)
+
+
+
+![png](docs/images/output_6_1.png)
+
