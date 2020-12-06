@@ -10,14 +10,17 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Title
+      title: radardsp
       url: radardsp.html
     - output: web,pdf
-      title: module name here
+      title: H5Dataset
       url: h5dataset.html
     - output: web,pdf
       title: Geometry
       url: geometry.html
+    - output: web,pdf
+      title: radar.config_v1
+      url: radarcfg_v1.html
     output: web
     title: radicalsdk
   output: web

@@ -1,8 +1,9 @@
 {
   "radicalsdk": {
     "Overview": "/",
-    "Title": "radardsp.html",
-    "module name here": "h5dataset.html",
-    "Geometry": "geometry.html"
+    "radardsp": "radardsp.html",
+    "H5Dataset": "h5dataset.html",
+    "Geometry": "geometry.html",
+    "radar.config_v1": "radarcfg_v1.html"
   }
 }
