@@ -3,6 +3,8 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"cfar_processing": "01_radardsp.ipynb",
+         "logger": "02_h5dataset.ipynb",
+         "H5DatasetLoader": "02_h5dataset.ipynb",
          "PolarToCartesianWarp": "03_geometry.ipynb",
          "read_radar_params": "04_radarcfg_v1.ipynb",
          "cfg_list_to_dict": "04_radarcfg_v1.ipynb",

@@ -5,6 +5,8 @@
 ![CI](https://github.com/moodoki/radical_sdk/workflows/CI/badge.svg)
 
 This is pre-alpha research quality code, and is being actively developed on.
+Anything may change at anytime. Please check back here often.
+
 Bug reports are very much appreciated.
 
 # TODO
@@ -12,7 +14,7 @@ Bug reports are very much appreciated.
  - [ ] Radar config reader
  - [ ] Read from aligned H5 dataset
  - [ ] Read from raw bags (to produce aligned/unaligned H5 datasets)
- - [ ] Polar to Cartesian Projection
+ - [x] Polar to Cartesian Projection
  - [ ] Camera/Radar coordinate transforms
 
 ## Install
@@ -27,8 +29,6 @@ A smaller sample to try things our can be found [here]().
 
 ```python
 import radicalsdk.h5dataset
-```
 
-```python
-dataset = radicalsdk.h5dataset
+dataset = radicalsdk.h5dataset.
 ```
