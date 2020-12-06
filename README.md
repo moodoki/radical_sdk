@@ -1,6 +1,8 @@
 # RaDICaL Dataset SDK
+> The RaDICaL Dataset: A synchronized and calibrated low-level Radar, RGB-D and IMU dataset.
 
 
+![CI](https://github.com/moodoki/radical_sdk/workflows/CI/badge.svg)
 
 This is pre-alpha research quality code. Bug reports are very much appreciated.
 
@@ -13,6 +15,6 @@ This is pre-alpha research quality code. Bug reports are very much appreciated.
 
 ## Install
 
-`pip install radical-dataset`
+`pip install radicalsdk`
 
 ## How to use
