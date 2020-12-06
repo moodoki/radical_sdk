@@ -17,7 +17,7 @@ class RadarFrame(object):
                  origin_at_bottom_center = True,
                  use_float32 = False,
                 ):
-        super(RadarFrameV1, self).__init__()
+        super(RadarFrame, self).__init__()
         self.cfg = radar_config
 
         #Beamforming params
