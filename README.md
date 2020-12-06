@@ -26,5 +26,9 @@ Download the dataset at our [project page](https://publish.illinois.edu/radicald
 A smaller sample to try things our can be found [here]().
 
 ```python
-import radicalsdk
+import radicalsdk.h5dataset
+```
+
+```python
+dataset = radicalsdk.h5dataset
 ```

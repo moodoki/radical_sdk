@@ -1,7 +1,7 @@
-repository: moodoki/nbdev_template
+repository: moodoki/radicalsdk
 output: web
-topnav_title: nbdev_template
-site_title: nbdev_template
+topnav_title: radicalsdk
+site_title: radicalsdk
 company_name: TeckYian Lim
 description: SDK for use with the RaDICaL Dataset
 # Set to false to disable KaTeX math
