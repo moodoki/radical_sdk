@@ -15,6 +15,6 @@ This is pre-alpha research quality code. Bug reports are very much appreciated.
 
 ## Install
 
-`pip install radicalsdk`
+`python -m pip install git+https://github.com/moodoki/radical_sdk.git`
 
 ## How to use
