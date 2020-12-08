@@ -4,9 +4,7 @@
 
 ![CI](https://github.com/moodoki/radical_sdk/workflows/CI/badge.svg)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/l0AyUw59w7g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![Video Preview](https://img.youtube.com/vi/l0AyUw59w7g/0.jpg)](https://www.youtube.com/watch?v=l0AyUw59w7g)
 
 This is pre-alpha research quality code, and is being actively developed on.
 Anything may change at anytime. Please check back here often.
