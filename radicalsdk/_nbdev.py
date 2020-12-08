@@ -23,7 +23,7 @@ modules = ["radardsp.py",
            "radar/config_v1.py",
            "radar/v1.py"]
 
-doc_url = "https://moodoki.github.io/radicalsdk/"
+doc_url = "https://moodoki.github.io/radical_sdk/"
 
 git_url = "https://github.com/moodoki/radicalsdk/tree/master/"
 
