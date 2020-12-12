@@ -49,6 +49,7 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="read_radar_params" class="doc_header"><code>read_radar_params</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_radar_params</code>(<strong><code>filename</code></strong>)</p>
 </blockquote>
+<p>Reads a text file containing serial commands and returns parsed config as a dictionary</p>
 
 </div>
 
@@ -71,8 +72,9 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cfg_list_to_dict" class="doc_header"><code>cfg_list_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L23" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cfg_list_to_dict</code>(<strong><code>data</code></strong>)</p>
+<h4 id="parse_commands" class="doc_header"><code>parse_commands</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L23" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_commands</code>(<strong><code>commands</code></strong>)</p>
 </blockquote>
+<p>Calls the corresponding parser for each command in commands list</p>
 
 </div>
 
@@ -95,8 +97,9 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="dict_to_list" class="doc_header"><code>dict_to_list</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L36" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dict_to_list</code>(<strong><code>cfg</code></strong>)</p>
+<h4 id="dict_to_list" class="doc_header"><code>dict_to_list</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L37" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dict_to_list</code>(<strong><code>cfg</code></strong>)</p>
 </blockquote>
+<p>Generates commands from config dictionary</p>
 
 </div>
 
@@ -119,8 +122,9 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="channelStr_to_dict" class="doc_header"><code>channelStr_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L142" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>channelStr_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="channelStr_to_dict" class="doc_header"><code>channelStr_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L143" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>channelStr_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
+<p>Handler for <code>channelcfg</code></p>
 
 </div>
 
@@ -143,8 +147,9 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="profileStr_to_dict" class="doc_header"><code>profileStr_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L167" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>profileStr_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="profileStr_to_dict" class="doc_header"><code>profileStr_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L169" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>profileStr_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
+<p>Handler for <code>profileCfg</code></p>
 
 </div>
 
@@ -167,8 +172,9 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="chirp_to_dict" class="doc_header"><code>chirp_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L201" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>chirp_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="chirp_to_dict" class="doc_header"><code>chirp_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L204" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>chirp_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
+<p>Handler for <code>chirpCfg</code></p>
 
 </div>
 
@@ -191,8 +197,9 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="power_to_dict" class="doc_header"><code>power_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L225" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>power_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="power_to_dict" class="doc_header"><code>power_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L229" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>power_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
+<p>handler for <code>lowPower</code></p>
 
 </div>
 
@@ -215,8 +222,9 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="frameStr_to_dict" class="doc_header"><code>frameStr_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L240" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>frameStr_to_dict</code>(<strong><code>args</code></strong>, <strong><code>cfg</code></strong>)</p>
+<h4 id="frameStr_to_dict" class="doc_header"><code>frameStr_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L245" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>frameStr_to_dict</code>(<strong><code>args</code></strong>, <strong><code>cfg</code></strong>)</p>
 </blockquote>
+<p>Handler for <code>frameCfg</code></p>
 
 </div>
 
@@ -239,8 +247,9 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="adcStr_to_dict" class="doc_header"><code>adcStr_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L261" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>adcStr_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="adcStr_to_dict" class="doc_header"><code>adcStr_to_dict</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/radar/config_v1.py#L267" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>adcStr_to_dict</code>(<strong><code>args</code></strong>, <strong><code>curr_cfg</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
+<p>Handler for <code>adcCfg</code></p>
 
 </div>
 
@@ -255,6 +264,106 @@ nb_path: "nbs/04_radarcfg_v1.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Example-Usage">Example Usage<a class="anchor-link" href="#Example-Usage"> </a></h1><p>For a text file with the following commands:</p>
+
+<pre><code>flushCfg
+dfeDataOutputMode 1
+channelCfg 15 5 0
+adcCfg 2 1
+lowPower 0 0
+profileCfg 0 77.0 58.0 7.0 40.0 0 0 100.0 1.0 304 9499 0 0 30
+chirpCfg 0 0 0 0.0 0.0 0.0 0.0 1
+chirpCfg 1 1 0 0.0 0.0 0.0 0.0 4
+frameCfg 0 1 32 0 33.333 1 0
+testFmkCfg 0 0 0 1
+setProfileCfg disable ADC disable
+sensorStart</code></pre>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">read_radar_params</span><span class="p">(</span><span class="n">radar_config_filename</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;numLanes&#39;: 4,
+ &#39;rx4&#39;: True,
+ &#39;rx3&#39;: True,
+ &#39;rx2&#39;: True,
+ &#39;rx1&#39;: True,
+ &#39;numTx&#39;: 2,
+ &#39;tx3&#39;: True,
+ &#39;tx2&#39;: False,
+ &#39;tx1&#39;: True,
+ &#39;isComplex&#39;: True,
+ &#39;image_band&#39;: False,
+ &#39;profiles&#39;: [{&#39;id&#39;: 0,
+   &#39;start_frequency&#39;: 77000000000.0,
+   &#39;idle&#39;: 5.8e-05,
+   &#39;adcStartTime&#39;: 7e-06,
+   &#39;rampEndTime&#39;: 3.9999999999999996e-05,
+   &#39;txPower&#39;: 0.0,
+   &#39;txPhaseShift&#39;: 0.0,
+   &#39;freqSlopeConst&#39;: 100000000000000.0,
+   &#39;txStartTime&#39;: 1e-06,
+   &#39;adcSamples&#39;: 304,
+   &#39;adcSampleRate&#39;: 9499000.0,
+   &#39;hpfCornerFreq1&#39;: 0,
+   &#39;hpfCornerFreq2&#39;: 0,
+   &#39;rxGain&#39;: 30.0}],
+ &#39;chirps&#39;: [{&#39;chirpStartIndex&#39;: 0,
+   &#39;chirpStopIndex&#39;: 0,
+   &#39;profileID&#39;: 0,
+   &#39;startFreqVariation&#39;: 0.0,
+   &#39;slopeVariation&#39;: 0.0,
+   &#39;idleVariation&#39;: 0.0,
+   &#39;adcStartVariation&#39;: 0.0,
+   &#39;chirptx3&#39;: False,
+   &#39;chirptx2&#39;: False,
+   &#39;chirptx1&#39;: True},
+  {&#39;chirpStartIndex&#39;: 1,
+   &#39;chirpStopIndex&#39;: 1,
+   &#39;profileID&#39;: 0,
+   &#39;startFreqVariation&#39;: 0.0,
+   &#39;slopeVariation&#39;: 0.0,
+   &#39;idleVariation&#39;: 0.0,
+   &#39;adcStartVariation&#39;: 0.0,
+   &#39;chirptx3&#39;: True,
+   &#39;chirptx2&#39;: False,
+   &#39;chirptx1&#39;: False}],
+ &#39;numChirps&#39;: 64,
+ &#39;fps&#39;: 30.00030000300003,
+ &#39;adcPower&#39;: &#39;regular&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
