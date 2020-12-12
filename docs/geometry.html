@@ -47,9 +47,13 @@ nb_path: "nbs/03_geometry.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="PolarToCartesianWarp" class="doc_header"><code>class</code> <code>PolarToCartesianWarp</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/geometry.py#L15" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>PolarToCartesianWarp</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Layer</code></p>
+<h2 id="PolarToCartesianWarp" class="doc_header"><code>class</code> <code>PolarToCartesianWarp</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/geometry.py#L17" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>PolarToCartesianWarp</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Layer</code></p>
 </blockquote>
-<p>Differentiable Polar Image to Cartersian Mapping</p>
+<p>Differentiable Polar Image to Cartersian Mapping
+This is a Tensorflow Keras Layer and
+expects a batch of input with shape [n, r, az, c]</p>
+<p>Running eagerly is supported as well.
+For single example input, use expanddims or newaxis.</p>
 
 </div>
 
@@ -57,6 +61,13 @@ nb_path: "nbs/03_geometry.ipynb"
 
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}

@@ -10,10 +10,18 @@ import tensorflow_addons as tfa
 
 import numpy as np
 
+from .radar import v1_constants
+
 # Cell
 
 class PolarToCartesianWarp(layers.Layer):
-    """Differentiable Polar Image to Cartersian Mapping"""
+    """Differentiable Polar Image to Cartersian Mapping
+    This is a Tensorflow Keras Layer and
+    expects a batch of input with shape [n, r, az, c]
+
+    Running eagerly is supported as well.
+    For single example input, use expanddims or newaxis.
+    """
     def __init__(self, full=True, scale=1.):
         super(PolarToCartesianWarp, self).__init__()
         self.full = full
@@ -39,3 +47,5 @@ class PolarToCartesianWarp(layers.Layer):
 
     def call(self, inputs):
         return tfa.image.resampler(inputs, self.warp)
+
+# Cell
