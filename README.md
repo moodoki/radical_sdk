@@ -44,7 +44,7 @@ data = H5DatasetLoader('../samples/indoor_sample.h5')
 
 frame_idx = 1
 plt.figure()
-plt.imshow(data['rgb'][frame_idx])
+plt.imshow(data['rgb'][frame_idx][..., ::-1])
 plt.title(f'RGB frame {frame_idx}@{data["rgb_timestamp"][frame_idx]}')
 plt.show()
 plt.figure()
