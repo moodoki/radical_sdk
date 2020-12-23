@@ -161,7 +161,8 @@ A small sample to try things our can be found <a href="">here</a>.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The radar data is a 3D array arranged slow_time, antenna, fast_time.</p>
-<p><a href="/radical_sdk/radarv1.html#RadarFrame"><code>RadarFrame</code></a> encapsulates the necessary processing</p>
+<p><a href="/radical_sdk/radarv1.html#RadarFrame"><code>RadarFrame</code></a> encapsulates the necessary processing and saves computation on subsequent calls
+as steps can be very expensive.</p>
 
 </div>
 </div>
@@ -179,11 +180,6 @@ A small sample to try things our can be found <a href="">here</a>.</p>
 <span class="c1"># Read config and configure RadarFrame object</span>
 <span class="n">radar_config</span> <span class="o">=</span> <span class="n">read_radar_params</span><span class="p">(</span><span class="s1">&#39;../samples/indoor_human_rcs.cfg&#39;</span><span class="p">)</span>
 <span class="n">rf</span> <span class="o">=</span> <span class="n">RadarFrame</span><span class="p">(</span><span class="n">radar_config</span><span class="p">)</span>
-
-<span class="c1">#Set raw cube to the required frame from the hdf5 file</span>
-<span class="n">rf</span><span class="o">.</span><span class="n">raw_cube</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;radar&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="c1"># The desired view of the radar frame is now available</span>
 </pre></div>
 
     </div>
@@ -207,7 +203,7 @@ A small sample to try things our can be found <a href="">here</a>.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">range_azimuth_capon</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">compute_range_azimuth</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;radar&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]))))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 

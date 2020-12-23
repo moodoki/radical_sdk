@@ -6,11 +6,18 @@ __all__ = ['RadarFrame']
 
 import numpy as np
 from mmwave import dsp
+from functools import partial
 
 # Cell
 
 class RadarFrame(object):
-    """docstring for RadarFrame"""
+    """Encapsulates several low level signal processing of a radar data cube
+    Several of these steps are computationally expensive.
+
+    This object stores intemediate steps to avoid recomputation when possible.
+    If no new raw datacube is passed in, subsequent request for different views of
+    the radar data are returned from the stored state.
+    """
     def __init__(self, radar_config,
                  angle_res = 1,
                  angle_range = 90,
@@ -122,8 +129,12 @@ class RadarFrame(object):
 
         self.__range_azimuth_dirty = False
 
-    def compute_range_azimuth(self, radar_raw=None):
+    def compute_range_azimuth(self, radar_raw=None, method='capon'):
+        """Beamform raw radar datacube"""
         if radar_raw is not None:
             self.raw_cube = radar_raw
 
-        return self.range_azimuth_capon
+        if method == 'capon':
+            return self.range_azimuth_capon
+        else:
+            raise NotImplementedError

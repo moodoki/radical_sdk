@@ -63,7 +63,8 @@ plt.show()
 
 The radar data is a 3D array arranged slow_time, antenna, fast_time.
 
-`RadarFrame` encapsulates the necessary processing
+`RadarFrame` encapsulates the necessary processing and saves computation on subsequent calls
+as steps can be very expensive.
 
 ```python
 #skip
@@ -74,11 +75,6 @@ from radicalsdk.radar.v1 import RadarFrame
 # Read config and configure RadarFrame object
 radar_config = read_radar_params('../samples/indoor_human_rcs.cfg')
 rf = RadarFrame(radar_config)
-
-#Set raw cube to the required frame from the hdf5 file
-rf.raw_cube = data['radar'][1]
-
-# The desired view of the radar frame is now available
 ```
 
 ### Range Azimuth in Polar Coordinates
@@ -86,7 +82,7 @@ rf.raw_cube = data['radar'][1]
 ```python
 # skip
 plt.figure()
-plt.imshow(np.log(np.abs(rf.range_azimuth_capon)))
+plt.imshow(np.log(np.abs(rf.compute_range_azimuth(data['radar'][1]))))
 plt.show()
 ```
 

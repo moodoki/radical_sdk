@@ -2,7 +2,7 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"cfar_processing": "01_radardsp.ipynb",
+index = {"range_azimuth_ca_cfar": "01_radardsp.ipynb",
          "logger": "04_radarcfg_v1.ipynb",
          "H5DatasetIterator": "02_h5dataset.ipynb",
          "H5DatasetLoader": "02_h5dataset.ipynb",
