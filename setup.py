@@ -36,7 +36,7 @@ setuptools.setup(
     url = cfg['git_url'],
     packages = setuptools.find_packages(),
     include_package_data = True,
-    package_data = ['radicalsdk':['*.npy']],
+    package_data = {'radicalsdk':['*.npy']},
     install_requires = requirements,
     dependency_links = cfg.get('dep_links','').split(),
     python_requires  = '>=' + cfg['min_python'],
