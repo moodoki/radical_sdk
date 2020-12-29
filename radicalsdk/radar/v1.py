@@ -6,7 +6,6 @@ __all__ = ['RadarFrame']
 
 import numpy as np
 from mmwave import dsp
-from functools import partial
 
 # Cell
 
@@ -51,8 +50,19 @@ class RadarFrame(object):
         self.__flip_ra = origin_at_bottom_center
 
     @property
+    def flipped(self):
+        """True if zero range is at bottom center of image,
+        i.e. y is flipped from typical image pixel coordinates with 0,0 at top left corner.
+        This is important for computing the intrinsic matrix"""
+        return self.__flip_ra
+
+    @property
+    def range_nbins(self):
+        return self.bins_processed
+
+    @property
     def max_range(self):
-        return self.range_resolution * self.bins_processed
+        return self.range_resolution * self.range_nbins
 
     @property
     def range_resolution(self):
