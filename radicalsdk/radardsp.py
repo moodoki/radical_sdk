@@ -9,10 +9,25 @@ from mmwave import dsp
 
 # Cell
 
-def range_azimuth_ca_cfar(beamformed_radar_cube):
+def _nms(cfar_in, beamformed_ra, nhood_size=1):
+    """non-maxumim suppression for cfar detections"""
+    def get_nhood(xx, yy):
+        return beamformed_ra[yy-nhood_size:yy+nhood_size+1, xx-nhood_size:xx+nhood_size+1]
+
+    nms_arr = np.zeros_like(cfar_in)
+
+    for yy, xx in zip(*np.where(cfar_in == 1)):
+        nms_arr[yy, xx] = 1 if np.all(beamformed_ra[yy, xx] >= get_nhood(xx, yy)) else 0
+
+    return nms_arr
+
+def range_azimuth_ca_cfar(beamformed_radar_cube, nms=True):
     """Cell-Averaging CFAR on beamformed radar signal
+
+
     inputs:
-      beamformed_radar_cube
+      - `beamformed_radar_cube`
+      - `nms`: default `True` whether to perform non-maximum suppression
     """
     range_az = np.abs(beamformed_radar_cube)
     heatmap_log = np.log2(range_az)
@@ -44,4 +59,8 @@ def range_azimuth_ca_cfar(beamformed_radar_cube):
     peaks[:, -SKIP_SIZE:] = 0
 
     peaks = peaks.astype('float32')
+
+    if nms:
+        peaks = peaks * _nms(peaks, beamformed_range_azimuth, 1)
+
     return peaks
