@@ -61,6 +61,6 @@ def range_azimuth_ca_cfar(beamformed_radar_cube, nms=True):
     peaks = peaks.astype('float32')
 
     if nms:
-        peaks = peaks * _nms(peaks, beamformed_range_azimuth, 1)
+        peaks = peaks * _nms(peaks, range_az, 1)
 
     return peaks
