@@ -6,6 +6,7 @@
     "Geometry": "geometry.html",
     "radar.config_v1": "radarcfg_v1.html",
     "radar.v1": "radarv1.html",
+    "Comparing Different Beamformers": "Beamforming.html",
     "Developer notes": "DeveloperNotes.html",
     "Using data from V1 Radar": "V1RadarExamples.html"
   }

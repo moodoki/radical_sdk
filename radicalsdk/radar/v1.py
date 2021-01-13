@@ -101,7 +101,7 @@ class RadarFrame(object):
 
     @property
     def range_cube(self):
-        if self.__range_cube:
+        if self.__range_cube is not None:
             return self.__range_cube
         else:
             range_cube = dsp.range_processing(self.raw_cube)
@@ -110,7 +110,7 @@ class RadarFrame(object):
 
     @property
     def range_doppler(self):
-        if self.__range_doppler:
+        if self.__range_doppler is not None:
             return self.__range_doppler
         else:
             range_doppler = dsp.doppler_processing(self.raw_cube)

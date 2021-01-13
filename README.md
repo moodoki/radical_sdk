@@ -13,7 +13,7 @@ Bug reports are very much appreciated.
 
 # TODO
 
- - [ ] Radar config reader
+ - [x] Radar config reader
  - [x] Read from aligned H5 dataset
  - [ ] Read from raw bags (to produce aligned/unaligned H5 datasets)
  - [x] Polar to Cartesian Projection

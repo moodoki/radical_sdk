@@ -25,6 +25,9 @@ entries:
       title: radar.v1
       url: radarv1.html
     - output: web,pdf
+      title: Comparing Different Beamformers
+      url: Beamforming.html
+    - output: web,pdf
       title: Developer notes
       url: DeveloperNotes.html
     - output: web,pdf
