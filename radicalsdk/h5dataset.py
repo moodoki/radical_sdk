@@ -8,6 +8,13 @@ import numpy as np
 import h5py
 import tensorflow as tf
 
+try:
+    from torch.utils.data import Dataset
+    __has_torch = True
+except ImportError:
+    __has_torch = False
+
+
 import mmwave
 
 import logging
@@ -73,6 +80,13 @@ class H5DatasetLoader(object):
     def filename(self):
         return self.filenames
 
+    def get_torch_dataset(self, streams=None):
+        try:
+            return RadicalDatasetTorch(self, streams)
+        except NameError:
+            raise RuntimeError('Torch is not available')
+
+
     def get_tf_dataset(self,
                        streams=['radar', 'rgb', 'depth'],
                        shuffle=False,
@@ -125,3 +139,25 @@ class H5DatasetLoader(object):
             _dataset = _dataset.prefetch(prefetch)
 
         return _dataset
+
+# Cell
+if __has_torch:
+    class RadicalDatasetTorch(Dataset):
+        def __init__(self, src_dataset, streams=None, transforms=None):
+            self.__src_dataset = src_dataset
+            if streams is not None:
+                self.__streams = streams
+            else:
+                self.__streams = ['radar', 'rgb', 'depth']
+
+        def __len__(self):
+            return len(self.__src_dataset)
+
+        def __getitem__(self, idx):
+            if torch.is_tensor(idx):
+                idx = idx.tolist()
+
+            sample = {s:self.__src_dataset[s][idx] for s in self.__streams}
+            return sample
+
+
