@@ -34,6 +34,8 @@ def aoa_capon(x, steering_vec, mu = 1e-7, bottom_center=True):
     if mu is not None:
         uI = tf.eye(num_rx, dtype=x.dtype) * mu
         Rxx_inv = linalg.inv(Rxx+uI)
+    else:
+        Rxx_inv = linalg.inv(Rxx)
     Rxx_inv_a = tf.matmul(Rxx_inv, steering_vec, transpose_b=True)
 
     den = tf.math.reciprocal_no_nan(
