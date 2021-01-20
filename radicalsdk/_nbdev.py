@@ -20,13 +20,17 @@ index = {"cfar_nms": "01_radardsp.ipynb",
          "frameStr_to_dict": "04_radarcfg_v1.ipynb",
          "adcStr_to_dict": "04_radarcfg_v1.ipynb",
          "command_handlers": "04_radarcfg_v1.ipynb",
-         "RadarFrame": "05_radarv1.ipynb"}
+         "RadarFrame": "05_radarv1.ipynb",
+         "cov_matrix": "06_beamformers.ipynb",
+         "forward_backward_avg": "06_beamformers.ipynb",
+         "aoa_capon": "06_beamformers.ipynb"}
 
 modules = ["radardsp.py",
            "h5dataset.py",
            "geometry.py",
            "radar/config_v1.py",
-           "radar/v1.py"]
+           "radar/v1.py",
+           "beamformers.py"]
 
 doc_url = "https://moodoki.github.io/radical_sdk/"
 
