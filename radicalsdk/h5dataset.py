@@ -89,7 +89,7 @@ class H5DatasetLoader(object):
 
 
     def get_tf_dataset(self,
-                       streams=['radar', 'rgb', 'depth'],
+                       streams=None,
                        shuffle=False,
                        repeat=False,
                        batchsize=16,
@@ -98,6 +98,8 @@ class H5DatasetLoader(object):
                        flatten_single=False,
                       ):
         logger.debug("Tensorflow Dataset creation")
+        if streams is None:
+            streams = ['radar', 'rgb', 'depth']
 
         out_shapes = tuple([
             tf.TensorShape(list(self.h5_file[s].shape[1:])) for s in streams
