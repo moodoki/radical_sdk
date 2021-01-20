@@ -7,7 +7,6 @@ import tensorflow as tf
 import tensorflow.linalg as linalg
 
 # Cell
-
 def cov_matrix(x):
     """Computes the covariance matrix on signal x"""
     n_chirps = x.shape[-1]

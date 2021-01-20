@@ -34,6 +34,6 @@ modules = ["radardsp.py",
 
 doc_url = "https://moodoki.github.io/radical_sdk/"
 
-git_url = "https://github.com/moodoki/radicalsdk/tree/master/"
+git_url = "https://github.com/moodoki/radical_sdk/tree/master/"
 
 def custom_doc_links(name): return None
