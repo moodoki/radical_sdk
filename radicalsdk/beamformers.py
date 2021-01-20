@@ -29,9 +29,11 @@ def aoa_capon(x, steering_vec, mu = 1e-7, bottom_center=True):
     """Tensorflow implementation of Capon AoA estimatation"""
     num_rx = x.shape[-2]
     Rxx = cov_matrix(x)
-    uI = tf.eye(num_rx, dtype=x.dtype) * mu
     Rxx = forward_backward_avg(Rxx)
-    Rxx_inv = linalg.inv(Rxx+uI)
+
+    if mu is not None:
+        uI = tf.eye(num_rx, dtype=x.dtype) * mu
+        Rxx_inv = linalg.inv(Rxx+uI)
     Rxx_inv_a = tf.matmul(Rxx_inv, steering_vec, transpose_b=True)
 
     den = tf.math.reciprocal_no_nan(
