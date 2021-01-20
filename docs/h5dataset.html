@@ -47,7 +47,7 @@ nb_path: "nbs/02_h5dataset.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="H5DatasetIterator" class="doc_header"><code>class</code> <code>H5DatasetIterator</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/h5dataset.py#L26" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>H5DatasetIterator</code>(<strong><code>dset</code></strong>, <strong><code>streams</code></strong>)</p>
+<h2 id="H5DatasetIterator" class="doc_header"><code>class</code> <code>H5DatasetIterator</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/h5dataset.py#L27" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>H5DatasetIterator</code>(<strong><code>dset</code></strong>, <strong><code>streams</code></strong>)</p>
 </blockquote>
 <p>Iterates through aligned frames dataset</p>
 
@@ -72,7 +72,7 @@ nb_path: "nbs/02_h5dataset.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="H5DatasetLoader" class="doc_header"><code>class</code> <code>H5DatasetLoader</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/h5dataset.py#L48" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>H5DatasetLoader</code>(<strong><code>filenames</code></strong>, <strong><code>default_streams</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="H5DatasetLoader" class="doc_header"><code>class</code> <code>H5DatasetLoader</code><a href="https://github.com/moodoki/radicalsdk/tree/master/radicalsdk/h5dataset.py#L49" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>H5DatasetLoader</code>(<strong><code>filenames</code></strong>, <strong><code>default_streams</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>A thin wrapper around h5py to provide convenience functions for training</p>
 
@@ -220,7 +220,7 @@ nb_path: "nbs/02_h5dataset.ipynb"
             }
         </style>
       <progress value='1' class='' max='200' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      0.50% [1/200 00:00<00:49]
+      0.50% [1/200 00:00<00:48]
     </div>
     
 </div>
@@ -302,8 +302,8 @@ nb_path: "nbs/02_h5dataset.ipynb"
                 background: #F44336;
             }
         </style>
-      <progress value='167' class='' max='200' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      83.50% [167/200 00:00<00:00]
+      <progress value='195' class='' max='200' style='width:300px; height:20px; vertical-align: middle;'></progress>
+      97.50% [195/200 00:00<00:00]
     </div>
     
 </div>
@@ -331,6 +331,8 @@ nb_path: "nbs/02_h5dataset.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">torch_dataset</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_torch_dataset</span><span class="p">(</span><span class="n">streams</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rgb&#39;</span><span class="p">,</span> <span class="s1">&#39;radar&#39;</span><span class="p">])</span>
+
+<span class="n">batch</span> <span class="o">=</span> <span class="n">torch_dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 </pre></div>
 
     </div>

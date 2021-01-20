@@ -9,6 +9,7 @@ import h5py
 import tensorflow as tf
 
 try:
+    import torch
     from torch.utils.data import Dataset
     __has_torch = True
 except ImportError:
@@ -157,7 +158,7 @@ if __has_torch:
             if torch.is_tensor(idx):
                 idx = idx.tolist()
 
-            sample = {s:self.__src_dataset[s][idx] for s in self.__streams}
+            sample = {s:self.__src_dataset[s][idx, ...] for s in self.__streams}
             return sample
 
 
