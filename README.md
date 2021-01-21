@@ -100,26 +100,11 @@ p2c = PolarToCartesianWarp()
 
 cartesian_radar = p2c(np.abs(rf.range_azimuth_capon)[np.newaxis, ..., np.newaxis])
 plt.figure()
-plt.imshow(np.log(cartesian_radar[0, ...]))
+with np.errstate(divide='ignore'):
+    plt.imshow(np.log(cartesian_radar[0, ...]))
 plt.show()
 ```
 
-    /home/moodoki/.venvs/radical/lib/python3.8/site-packages/tensorflow_addons/utils/resource_loader.py:72: UserWarning: You are currently using TensorFlow 2.3.1 and trying to load a custom op (custom_ops/image/_resampler_ops.so).
-    TensorFlow Addons has compiled its custom ops against TensorFlow 2.2.0, and there are no compatibility guarantees between the two versions. 
-    This means that you might get segfaults when loading the custom op, or other kind of low-level errors.
-     If you do, do not file an issue on Github. This is a known limitation.
-    
-    It might help you to fallback to pure Python ops with TF_ADDONS_PY_OPS . To do that, see https://github.com/tensorflow/addons#gpucpu-custom-ops 
-    
-    You can also change the TensorFlow version installed on your system. You would need a TensorFlow version equal to or above 2.2.0 and strictly below 2.3.0.
-     Note that nightly versions of TensorFlow, as well as non-pip TensorFlow like `conda install tensorflow` or compiled from source are not supported.
-    
-    The last solution is to find the TensorFlow Addons version that has custom ops compatible with the TensorFlow installed on your system. To do that, refer to the readme: https://github.com/tensorflow/addons
-      warnings.warn(
-    <ipython-input-6-53e1d30792fa>:8: RuntimeWarning: divide by zero encountered in log
-      plt.imshow(np.log(cartesian_radar[0, ...]))
 
-
-
-![png](docs/images/output_14_1.png)
+![png](docs/images/output_14_0.png)
 
