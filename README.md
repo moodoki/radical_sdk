@@ -33,9 +33,18 @@ A small sample to try things our can be found [here]().
 Reading and displaying depth and RGB is easy
 
 ```python
-#skip
 import matplotlib.pyplot as plt
 import numpy as np
+```
+
+```python
+plt.rcParams['figure.figsize'] = [10, ]
+
+```
+
+```python
+#skip
+
 
 from radicalsdk.h5dataset import H5DatasetLoader
 
@@ -54,11 +63,11 @@ plt.show()
 ```
 
 
-![png](docs/images/output_8_0.png)
+![png](docs/images/output_10_0.png)
 
 
 
-![png](docs/images/output_8_1.png)
+![png](docs/images/output_10_1.png)
 
 
 The radar data is a 3D array arranged slow_time, antenna, fast_time.
@@ -81,13 +90,13 @@ rf = RadarFrame(radar_config)
 
 ```python
 # skip
-plt.figure()
+plt.figure(figsize=(10,20))
 plt.imshow(np.log(np.abs(rf.compute_range_azimuth(data['radar'][1]))))
 plt.show()
 ```
 
 
-![png](docs/images/output_12_0.png)
+![png](docs/images/output_14_0.png)
 
 
 ### Projecting to cartesian
@@ -106,5 +115,5 @@ plt.show()
 ```
 
 
-![png](docs/images/output_14_0.png)
+![png](docs/images/output_16_0.png)
 
