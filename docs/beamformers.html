@@ -72,9 +72,16 @@ nb_path: "nbs/06_beamformers.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="forward_backward_avg" class="doc_header"><code>forward_backward_avg</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>forward_backward_avg</code>(<strong><code>Rxx</code></strong>)</p>
+<h4 id="forward_backward_avg" class="doc_header"><code>forward_backward_avg</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L19" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>forward_backward_avg</code>(<strong><code>Rxx</code></strong>)</p>
 </blockquote>
-<p>Backward forward averaging</p>
+<p>Forward-Backward Averaging of covariance matrix <code>Rxx</code></p>
+<blockquote><p>M. Zatman and D. Marshall, "Forward-backward averaging in the presence of array manifold errors,"
+in IEEE Transactions on Antennas and Propagation, vol. 46, no. 11, pp. 1700-1704, Nov. 1998, doi: 10.1109/8.736625.</p>
+</blockquote>
+<p>Inputs:</p>
+<ul>
+<li>Rxx: Batch of covariance matrices <code>[N, m, m]</code></li>
+</ul>
 
 </div>
 
@@ -97,9 +104,20 @@ nb_path: "nbs/06_beamformers.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="aoa_capon" class="doc_header"><code>aoa_capon</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>aoa_capon</code>(<strong><code>x</code></strong>, <strong><code>steering_vec</code></strong>, <strong><code>mu</code></strong>=<em><code>1e-07</code></em>, <strong><code>bottom_center</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="aoa_capon" class="doc_header"><code>aoa_capon</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>aoa_capon</code>(<strong><code>x</code></strong>, <strong><code>steering_vec</code></strong>, <strong><code>mu</code></strong>=<em><code>1e-07</code></em>)</p>
 </blockquote>
 <p>Tensorflow implementation of Capon AoA estimatation</p>
+<p>Inputs:</p>
+<ul>
+<li><code>x</code>: signal to be beamformed. <code>[N, n_rx, n_samples]</code></li>
+<li><code>steering_vec</code>: Vandermode steering vector [n_angle_bins, n_rx]</li>
+<li><code>mu</code>: detuning factor, if $R_{xx}$ is singular, ensures that <code>linalg.inv</code> gives stable results.</li>
+</ul>
+<p>Outputs:</p>
+<ul>
+<li><code>den</code>: denominator of Capon beamforming equation, i.e. $a(        heta)^*R_{xx}^{-1}a(    heta)$</li>
+<li><code>weights</code>: tuning weights for each antenna</li>
+</ul>
 
 </div>
 

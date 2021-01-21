@@ -8,13 +8,24 @@ import tensorflow.linalg as linalg
 
 # Cell
 def cov_matrix(x):
-    """Computes the covariance matrix on signal x"""
+    """Computes the covariance matrix on signal x
+
+
+    """
     n_chirps = x.shape[-1]
     Rxx = tf.matmul(x, x, adjoint_b=True)
     return Rxx/n_chirps
 
 def forward_backward_avg(Rxx):
-    """Backward forward averaging"""
+    """Forward-Backward Averaging of covariance matrix `Rxx`
+
+    > M. Zatman and D. Marshall, "Forward-backward averaging in the presence of array manifold errors,"
+    > in IEEE Transactions on Antennas and Propagation, vol. 46, no. 11, pp. 1700-1704, Nov. 1998, doi: 10.1109/8.736625.
+
+    Inputs:
+     - Rxx: Batch of covariance matrices `[N, m, m]`
+
+    """
     num_rx = Rxx.shape[-1]
 
     J = tf.reverse(tf.eye(num_rx, dtype=Rxx.dtype), [-1])
@@ -24,8 +35,19 @@ def forward_backward_avg(Rxx):
 
     return R_fb
 
-def aoa_capon(x, steering_vec, mu = 1e-7, bottom_center=True):
-    """Tensorflow implementation of Capon AoA estimatation"""
+def aoa_capon(x, steering_vec, mu = 1e-7):
+    """Tensorflow implementation of Capon AoA estimatation
+
+    Inputs:
+    - `x`: signal to be beamformed. `[N, n_rx, n_samples]`
+    - `steering_vec`: Vandermode steering vector [n_angle_bins, n_rx]
+    - `mu`: detuning factor, if $R_{xx}$ is singular, ensures that `linalg.inv` gives stable results.
+
+
+    Outputs:
+    - `den`: denominator of Capon beamforming equation, i.e. $a(\theta)^*R_{xx}^{-1}a(\theta)$
+    - `weights`: tuning weights for each antenna
+    """
     num_rx = x.shape[-2]
     Rxx = cov_matrix(x)
     Rxx = forward_backward_avg(Rxx)
