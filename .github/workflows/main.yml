@@ -29,6 +29,9 @@ jobs:
     - name: Check if there is no diff library/notebooks
       run: |
         if [ -n "$(nbdev_diff_nbs)" ]; then echo -e "!!! Detected difference between the notebooks and the library"; false; fi
+    - name: Download sample data for tests
+      run: |
+        wget -P samples/ https://fireball.teckyianlim.me/file/flaming-cake/indoor_sample_50.h5
     - name: Run tests
       run: |
         nbdev_test_nbs
