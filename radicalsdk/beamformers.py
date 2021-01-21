@@ -47,7 +47,7 @@ def aoa_capon(x, steering_vec, mu = 1e-7):
 
 
     Outputs:
-    - `den`: denominator of Capon beamforming equation, i.e. $a(\\theta)^*R_{xx}^{-1}a(\\theta)$
+    - `den`: denominator of Capon beamforming equation, i.e. $a(\\theta)^*R_{xx}^{-1}a(\\theta)^T$
     - `weights`: tuning weights for each antenna
     """
     num_rx = x.shape[-2]
