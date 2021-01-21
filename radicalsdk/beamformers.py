@@ -8,9 +8,11 @@ import tensorflow.linalg as linalg
 
 # Cell
 def cov_matrix(x):
-    """Computes the covariance matrix on signal x
+    """Computes the covariance matrix on signal `x`
 
+    `x` can be batched. Hermitian transpose applied on the last 2 dimensions
 
+    Rxx = xx^H
     """
     n_chirps = x.shape[-1]
     Rxx = tf.matmul(x, x, adjoint_b=True)
@@ -45,7 +47,7 @@ def aoa_capon(x, steering_vec, mu = 1e-7):
 
 
     Outputs:
-    - `den`: denominator of Capon beamforming equation, i.e. $a(\theta)^*R_{xx}^{-1}a(\theta)$
+    - `den`: denominator of Capon beamforming equation, i.e. $a(\\theta)^*R_{xx}^{-1}a(\\theta)$
     - `weights`: tuning weights for each antenna
     """
     num_rx = x.shape[-2]

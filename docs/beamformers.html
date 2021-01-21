@@ -49,7 +49,9 @@ nb_path: "nbs/06_beamformers.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="cov_matrix" class="doc_header"><code>cov_matrix</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L10" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cov_matrix</code>(<strong><code>x</code></strong>)</p>
 </blockquote>
-<p>Computes the covariance matrix on signal x</p>
+<p>Computes the covariance matrix on signal <code>x</code></p>
+<p><code>x</code> can be batched. Hermitian transpose applied on the last 2 dimensions</p>
+<p>Rxx = xx^H</p>
 
 </div>
 
@@ -72,7 +74,7 @@ nb_path: "nbs/06_beamformers.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="forward_backward_avg" class="doc_header"><code>forward_backward_avg</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L19" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>forward_backward_avg</code>(<strong><code>Rxx</code></strong>)</p>
+<h4 id="forward_backward_avg" class="doc_header"><code>forward_backward_avg</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>forward_backward_avg</code>(<strong><code>Rxx</code></strong>)</p>
 </blockquote>
 <p>Forward-Backward Averaging of covariance matrix <code>Rxx</code></p>
 <blockquote><p>M. Zatman and D. Marshall, "Forward-backward averaging in the presence of array manifold errors,"
@@ -104,7 +106,7 @@ in IEEE Transactions on Antennas and Propagation, vol. 46, no. 11, pp. 1700-1704
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="aoa_capon" class="doc_header"><code>aoa_capon</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>aoa_capon</code>(<strong><code>x</code></strong>, <strong><code>steering_vec</code></strong>, <strong><code>mu</code></strong>=<em><code>1e-07</code></em>)</p>
+<h4 id="aoa_capon" class="doc_header"><code>aoa_capon</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/beamformers.py#L40" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>aoa_capon</code>(<strong><code>x</code></strong>, <strong><code>steering_vec</code></strong>, <strong><code>mu</code></strong>=<em><code>1e-07</code></em>)</p>
 </blockquote>
 <p>Tensorflow implementation of Capon AoA estimatation</p>
 <p>Inputs:</p>
