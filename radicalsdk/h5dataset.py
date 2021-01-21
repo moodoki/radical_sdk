@@ -162,5 +162,3 @@ if __has_torch:
 
             sample = {s:self.__src_dataset[s][idx, ...] for s in self.__streams}
             return sample
-
-

@@ -27,7 +27,7 @@ Bug reports are very much appreciated.
 > Dataset is currently under review and will be made available soon.
 
 Download the dataset at our [project page](https://publish.illinois.edu/radicaldata/).
-A small sample to try things our can be found [here]().
+A small sample to try things our can be found [here](https://fireball.teckyianlim.me/file/flaming-cake/indoor_sample_50.h5).
 
 
 Reading and displaying depth and RGB is easy
@@ -44,7 +44,7 @@ plt.rcParams['figure.figsize'] = [10, 20]
 #skip
 from radicalsdk.h5dataset import H5DatasetLoader
 
-data = H5DatasetLoader('../samples/indoor_sample.h5')
+data = H5DatasetLoader('../samples/indoor_sample_50.h5')
 
 
 frame_idx = 1
