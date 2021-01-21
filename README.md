@@ -33,19 +33,15 @@ A small sample to try things our can be found [here]().
 Reading and displaying depth and RGB is easy
 
 ```python
+#skip
 import matplotlib.pyplot as plt
 import numpy as np
-```
 
-```python
-plt.rcParams['figure.figsize'] = [10, ]
-
+plt.rcParams['figure.figsize'] = [10, 20]
 ```
 
 ```python
 #skip
-
-
 from radicalsdk.h5dataset import H5DatasetLoader
 
 data = H5DatasetLoader('../samples/indoor_sample.h5')
@@ -63,11 +59,11 @@ plt.show()
 ```
 
 
-![png](docs/images/output_10_0.png)
+![png](docs/images/output_9_0.png)
 
 
 
-![png](docs/images/output_10_1.png)
+![png](docs/images/output_9_1.png)
 
 
 The radar data is a 3D array arranged slow_time, antenna, fast_time.
@@ -96,7 +92,7 @@ plt.show()
 ```
 
 
-![png](docs/images/output_14_0.png)
+![png](docs/images/output_13_0.png)
 
 
 ### Projecting to cartesian
@@ -115,5 +111,5 @@ plt.show()
 ```
 
 
-![png](docs/images/output_16_0.png)
+![png](docs/images/output_15_0.png)
 
