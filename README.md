@@ -86,7 +86,7 @@ rf = RadarFrame(radar_config)
 
 ```python
 # skip
-plt.figure(figsize=(10,20))
+plt.figure()
 plt.imshow(np.log(np.abs(rf.compute_range_azimuth(data['radar'][1]))))
 plt.show()
 ```
