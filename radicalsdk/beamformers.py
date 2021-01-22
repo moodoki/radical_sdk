@@ -8,11 +8,12 @@ import tensorflow.linalg as linalg
 
 # Cell
 def cov_matrix(x):
-    """Computes the covariance matrix on signal `x`
+    """Computes the covariance matrix $R_{xx}$ on signal `x`
 
-    `x` can be batched. Hermitian transpose applied on the last 2 dimensions
+    $$ Rxx = xx^H $$
 
-    Rxx = xx^H
+    `x` can be batched. Hermitian transpose and matrix multiply applied on the last 2 dimensions
+
     """
     n_chirps = x.shape[-1]
     Rxx = tf.matmul(x, x, adjoint_b=True)
