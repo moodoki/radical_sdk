@@ -10,7 +10,7 @@ import tensorflow.linalg as linalg
 def cov_matrix(x):
     """Computes the covariance matrix $R_{xx}$ on signal `x`
 
-    $$ Rxx = xx^H $$
+    $$ R_{xx} = xx^H $$
 
     `x` can be batched. Hermitian transpose and matrix multiply applied on the last 2 dimensions
 
