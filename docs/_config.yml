@@ -39,7 +39,7 @@ plugins:
 - jekyll-remote-theme
 port: 4000
 remote_theme: fastai/nbdev-jekyll-theme
-repository: moodoki/radicalsdk
+repository: moodoki/radical_sdk
 sidebars:
 - home_sidebar
 site_title: radicalsdk
