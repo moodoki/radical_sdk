@@ -9,6 +9,7 @@
     "Beamformers": "beamformers.html",
     "Comparing Different Beamformers": "Beamforming.html",
     "Developer notes": "DeveloperNotes.html",
+    "Detecting objects in RGB and Projecting Bounding Boxes": "ProjectBBoxExample.html",
     "Using data from V1 Radar": "V1RadarExamples.html"
   }
 }

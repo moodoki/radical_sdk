@@ -34,6 +34,9 @@ entries:
       title: Developer notes
       url: DeveloperNotes.html
     - output: web,pdf
+      title: Detecting objects in RGB and Projecting Bounding Boxes
+      url: ProjectBBoxExample.html
+    - output: web,pdf
       title: Using data from V1 Radar
       url: V1RadarExamples.html
     output: web
