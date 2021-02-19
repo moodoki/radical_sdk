@@ -24,7 +24,7 @@ Bug reports are very much appreciated.
 `python -m pip install git+https://github.com/moodoki/radical_sdk.git`
 
 ## How to use
-> Dataset is currently under review and will be made available soon. DOI:[10.13012/B2IDB-3289560_V1](https://doi.org/10.13012/B2IDB-3289560_V1)> Dataset is distrbuted under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
+> Our dataset is distrbuted under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. The dataset is currently under review and will be made available soon. DOI: [10.13012/B2IDB-3289560_V1](https://doi.org/10.13012/B2IDB-3289560_V1). 
 
 
 Download the dataset at our [project page](https://publish.illinois.edu/radicaldata/).
