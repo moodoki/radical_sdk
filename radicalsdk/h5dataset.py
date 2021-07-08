@@ -117,11 +117,11 @@ class H5DatasetLoader(object):
         )
 
         if shuffle:
-            debug("  Outputs of dataset will be shuffled")
+            logger.debug("  Outputs of dataset will be shuffled")
             _dataset = _dataset.shuffle(batchsize * 4)
 
         if repeat:
-            debug(f'  Dataset will be repeated {repeat} files')
+            logger.debug(f'  Dataset will be repeated {repeat} files')
             _dataset = _dataset.repeat(repeat)
 
         if preprocess_chain is not None:
