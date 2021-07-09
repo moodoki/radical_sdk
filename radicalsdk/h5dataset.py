@@ -39,7 +39,7 @@ class H5DatasetIterator():
         self._idx += 1
         try:
             return tuple(self._dset[s][self._idx] for s in self.req_streams)
-        except ValueError:
+        except IndexError:
             self._idx = 0
             raise StopIteration
 
