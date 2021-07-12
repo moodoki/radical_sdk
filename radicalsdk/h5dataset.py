@@ -8,6 +8,8 @@ import numpy as np
 import h5py
 import tensorflow as tf
 
+import tempfile
+
 try:
     import torch
     from torch.utils.data import Dataset
@@ -52,15 +54,41 @@ class H5DatasetLoader(object):
         super(H5DatasetLoader, self).__init__()
         self.filenames = filenames
         if isinstance(self.filenames, list):
-            raise NotImplementedError
+            self._h5_tempfile = tempfile.TemporaryFile()
+            self.h5_file = h5py.File(self._h5_tempfile, 'w', libver='latest')
+
+            _allfiles, _allstreams, _lengths = zip(*[H5DatasetLoader.load_single_h5(f) for f in self.filenames])
+
+            total_len = sum(_lengths)
+
+            #create virtual datasets of, assumes that all files have the streams of first file and shape of first file
+            ll = (0,) + _lengths
+            ll = np.cumsum(ll)
+            for s in _allstreams[0]:
+                shape = (total_len, ) + _allfiles[0][s].shape[1:]
+                layout = h5py.VirtualLayout(shape=shape, dtype=_allfiles[0][s].dtype)
+
+                for idx, f in enumerate(_allfiles):
+                    vsource = h5py.VirtualSource(f[s])
+                    layout[ll[idx]:ll[idx+1]] = vsource
+
+                self.h5_file.create_virtual_dataset(s, layout)
+
         else:
-            self.h5_file = h5py.File(self.filenames, 'r')
+            self.h5_file = H5DatasetLoader.load_single_h5(self.filenames)[0]
         self.streams_available = list(self.h5_file.keys())
         self.default_streams = default_streams
 
         if default_streams is not None:
             for s in default_streams:
                 assert s in self.streams_available, f"{s} not found in available streams"
+
+    @staticmethod
+    def load_single_h5(filename):
+        h5 = h5py.File(filename, 'r')
+        streams_available = list(h5.keys())
+        dataset_len = len(h5[streams_available[0]])
+        return h5, streams_available, dataset_len
 
     def __len__(self):
         return len(self.h5_file[self.streams_available[0]])
