@@ -54,10 +54,10 @@ class H5DatasetLoader(object):
         super(H5DatasetLoader, self).__init__()
         self.filenames = filenames
         if isinstance(self.filenames, list):
-            self._h5_tempfile = tempfile.TemporaryFile()
-            self.h5_file = h5py.File(self._h5_tempfile, 'w', libver='latest')
+            self._h5_tempfile = tempfile.NamedTemporaryFile()
+            #self.h5_file = h5py.File(self._h5_tempfile, 'w', libver='latest')
 
-            _allfiles, _allstreams, _lengths = zip(*[H5DatasetLoader.load_single_h5(f) for f in self.filenames])
+            self._allfiles, _allstreams, _lengths = zip(*[H5DatasetLoader.load_single_h5(f) for f in self.filenames])
 
             total_len = sum(_lengths)
 
@@ -65,15 +65,17 @@ class H5DatasetLoader(object):
             ll = (0,) + _lengths
             ll = np.cumsum(ll)
             for s in _allstreams[0]:
-                shape = (total_len, ) + _allfiles[0][s].shape[1:]
-                layout = h5py.VirtualLayout(shape=shape, dtype=_allfiles[0][s].dtype)
+                shape = (total_len, ) + self._allfiles[0][s].shape[1:]
+                layout = h5py.VirtualLayout(shape=shape, dtype=self._allfiles[0][s].dtype)
 
-                for idx, f in enumerate(_allfiles):
+                for idx, f in enumerate(self._allfiles):
                     vsource = h5py.VirtualSource(f[s])
                     layout[ll[idx]:ll[idx+1]] = vsource
 
-                self.h5_file.create_virtual_dataset(s, layout)
-
+                with h5py.File(self._h5_tempfile.name, 'a', libver='latest') as f:
+                    f.create_virtual_dataset(s, layout,)
+            self._h5_tempfile.flush()
+            self.h5_file = H5DatasetLoader.load_single_h5(self._h5_tempfile.name)
         else:
             self.h5_file = H5DatasetLoader.load_single_h5(self.filenames)[0]
         self.streams_available = list(self.h5_file.keys())
