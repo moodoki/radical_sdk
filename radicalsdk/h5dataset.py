@@ -75,7 +75,7 @@ class H5DatasetLoader(object):
                 with h5py.File(self._h5_tempfile.name, 'a', libver='latest') as f:
                     f.create_virtual_dataset(s, layout,)
             self._h5_tempfile.flush()
-            self.h5_file = H5DatasetLoader.load_single_h5(self._h5_tempfile.name)
+            self.h5_file = H5DatasetLoader.load_single_h5(self._h5_tempfile.name)[0]
         else:
             self.h5_file = H5DatasetLoader.load_single_h5(self.filenames)[0]
         self.streams_available = list(self.h5_file.keys())
