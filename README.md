@@ -39,14 +39,14 @@ A small sample (50 frames) to try things our can be found [here](https://firebal
 
 Reading and displaying depth and RGB is easy
 
-```python
+```
 import matplotlib.pyplot as plt
 import numpy as np
 
 plt.rcParams['figure.figsize'] = [10, 20]
 ```
 
-```python
+```
 from radicalsdk.h5dataset import H5DatasetLoader
 
 data = H5DatasetLoader('../samples/indoor_sample_50.h5')
@@ -64,11 +64,15 @@ plt.show()
 ```
 
 
+    
 ![png](docs/images/output_9_0.png)
+    
 
 
 
+    
 ![png](docs/images/output_9_1.png)
+    
 
 
 The radar data is a 3D array arranged slow_time, antenna, fast_time.
@@ -76,7 +80,7 @@ The radar data is a 3D array arranged slow_time, antenna, fast_time.
 `RadarFrame` encapsulates the necessary processing and saves computation on subsequent calls
 as steps can be very expensive.
 
-```python
+```
 from radicalsdk.radar.config_v1 import read_radar_params
 from radicalsdk.radar.v1 import RadarFrame
 
@@ -87,19 +91,21 @@ rf = RadarFrame(radar_config)
 
 ### Range Azimuth in Polar Coordinates
 
-```python
+```
 plt.figure()
 plt.imshow(np.log(np.abs(rf.compute_range_azimuth(data['radar'][1]))))
 plt.show()
 ```
 
 
+    
 ![png](docs/images/output_13_0.png)
+    
 
 
 ### Projecting to cartesian
 
-```python
+```
 from radicalsdk.geometry import PolarToCartesianWarp
 
 p2c = PolarToCartesianWarp()
@@ -112,5 +118,7 @@ plt.show()
 ```
 
 
+    
 ![png](docs/images/output_15_0.png)
+    
 

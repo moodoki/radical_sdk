@@ -26,6 +26,21 @@ nb_path: "nbs/03_geometry.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2022-06-07 18:36:52.304099: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-06-07 18:36:52.304148: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -47,7 +62,7 @@ nb_path: "nbs/03_geometry.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="PolarToCartesianWarp" class="doc_header"><code>class</code> <code>PolarToCartesianWarp</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/geometry.py#L17" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>PolarToCartesianWarp</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Layer</code></p>
+<h2 id="PolarToCartesianWarp" class="doc_header"><code>class</code> <code>PolarToCartesianWarp</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/geometry.py#L17" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>PolarToCartesianWarp</code>(<strong><code>full</code></strong>=<em><code>True</code></em>, <strong><code>scale</code></strong>=<em><code>1.0</code></em>) :: <code>Layer</code></p>
 </blockquote>
 <p>Differentiable Polar Image to Cartersian Mapping
 This is a Tensorflow Keras Layer and
@@ -184,5 +199,5 @@ For single example input, use expanddims or newaxis.</p>
     {% endraw %}
 
 </div>
- 
+
 
