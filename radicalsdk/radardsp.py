@@ -24,7 +24,6 @@ def cfar_nms(cfar_in, beamformed_ra, nhood_size=1):
 def range_azimuth_ca_cfar(beamformed_radar_cube, nms=True):
     """Cell-Averaging CFAR on beamformed radar signal
 
-
     inputs:
       - `beamformed_radar_cube`
       - `nms`: default `True` whether to perform non-maximum suppression
