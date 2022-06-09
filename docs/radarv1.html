@@ -49,8 +49,13 @@ nb_path: "nbs/05_radarv1.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h2 id="RadarFrame" class="doc_header"><code>class</code> <code>RadarFrame</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/radar/v1.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>RadarFrame</code>(<strong><code>radar_config</code></strong>, <strong><code>angle_res</code></strong>=<em><code>1</code></em>, <strong><code>angle_range</code></strong>=<em><code>90</code></em>, <strong><code>origin_at_bottom_center</code></strong>=<em><code>True</code></em>, <strong><code>use_float32</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
-<p>Encapsulates several low level signal processing of a radar data cube
-Several of these steps are computationally expensive.</p>
+<p>Encapsulates processing of a radar frame data cube.
+The RadarFrame object can be initialized once, so long as there's no change in
+the radar configuration.
+When new radar data is available, set raw radar data using the <code>raw_cube</code> property.</p>
+<p>Various processing of the radar data are computed lazily on the first
+access to each property. Processing can also be triggered manually by calling
+the related methods.</p>
 <p>This object stores intemediate steps to avoid recomputation when possible.
 If no new raw datacube is passed in, subsequent request for different views of
 the radar data are returned from the stored state.</p>
@@ -68,6 +73,138 @@ the radar data are returned from the stored state.</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.range_nbins" class="doc_header"><code>RadarFrame.range_nbins</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Number of bins in range</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.max_range" class="doc_header"><code>RadarFrame.max_range</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Maximum range in meters, this property is computed from the radar configuration</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.range_resolution" class="doc_header"><code>RadarFrame.range_resolution</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Range resolution in meters</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.doppler_resolution" class="doc_header"><code>RadarFrame.doppler_resolution</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Doppler resolution in m/s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.max_unambiguous_doppler" class="doc_header"><code>RadarFrame.max_unambiguous_doppler</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Maximum unambiguous doppler in m/s.
+In FMCW radar processing, aliasing will occur when the object's relative Doppler
+is above this value.
+i.e. if <code>max_unambiguous_doppler</code> is 10m/s, and the object is at 11 m/s, the computed doppler will be -9 m/s.</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.doppler_bins" class="doc_header"><code>RadarFrame.doppler_bins</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Number of bins in doppler dimension</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.raw_cube" class="doc_header"><code>RadarFrame.raw_cube</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Raw radar data cube
+Set the radar data cube using this property.
+<code>rf.raw_cube = radar_cube</code></p>
+<p>This will clear all cached processed data like <code>range_cube</code>, <code>range_azimuth</code>, etc.</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.range_cube" class="doc_header"><code>RadarFrame.range_cube</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Get the radar data as a range cube.
+Processing from the raw cube is done lazily on the first access to this property.</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.range_doppler" class="doc_header"><code>RadarFrame.range_doppler</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Get the radar data as a range doppler cube.
+Processing from the raw cube is done lazily on the first access to this property.</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.range_azimuth_capon" class="doc_header"><code>RadarFrame.range_azimuth_capon</code><a href="" class="source_link" style="float:right">[source]</a></h4>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="RadarFrame.compute_range_azimuth" class="doc_header"><code>RadarFrame.compute_range_azimuth</code><a href="https://github.com/moodoki/radical_sdk/tree/master/radicalsdk/radar/v1.py#L175" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>RadarFrame.compute_range_azimuth</code>(<strong><code>radar_raw</code></strong>=<em><code>None</code></em>, <strong><code>method</code></strong>=<em><code>'capon'</code></em>)</p>
+</blockquote>
+<p>Beamform raw radar datacube</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}

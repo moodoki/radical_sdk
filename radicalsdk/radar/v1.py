@@ -10,8 +10,14 @@ from mmwave import dsp
 # Cell
 
 class RadarFrame(object):
-    """Encapsulates several low level signal processing of a radar data cube
-    Several of these steps are computationally expensive.
+    """Encapsulates processing of a radar frame data cube.
+    The RadarFrame object can be initialized once, so long as there's no change in
+    the radar configuration.
+    When new radar data is available, set raw radar data using the `raw_cube` property.
+
+    Various processing of the radar data are computed lazily on the first
+    access to each property. Processing can also be triggered manually by calling
+    the related methods.
 
     This object stores intemediate steps to avoid recomputation when possible.
     If no new raw datacube is passed in, subsequent request for different views of
@@ -29,7 +35,7 @@ class RadarFrame(object):
         #Beamforming params
         self.bins_processed = self.cfg['profiles'][0]['adcSamples'] #radar_cube.shape[0]
         self.virt_ant = self.cfg['numLanes'] * len(self.cfg['chirps']) #radar_cube.shape[1]
-        self.doppler_bins = self.cfg['numChirps'] // len(self.cfg['chirps']) #radar_cube.shape[2]
+        self.__doppler_bins = self.cfg['numChirps'] // len(self.cfg['chirps']) #radar_cube.shape[2]
         self.angle_res = angle_res
         self.angle_range = angle_range
         self.angle_bins = (self.angle_range * 2) // self.angle_res + 1
@@ -58,21 +64,30 @@ class RadarFrame(object):
 
     @property
     def range_nbins(self):
+        """Number of bins in range"""
         return self.bins_processed
 
     @property
     def max_range(self):
+        """Maximum range in meters, this property is computed from the radar configuration"""
         return self.range_resolution * self.range_nbins
 
     @property
     def range_resolution(self):
+        """Range resolution in meters"""
         range_res, bw = dsp.range_resolution(self.cfg['profiles'][0]['adcSamples'],
                                              self.cfg['profiles'][0]['adcSampleRate'] / 1000,
                                              self.cfg['profiles'][0]['freqSlopeConst'] / 1e12)
         return range_res
 
     @property
+    def doppler_bins(self):
+        """Number of bins in doppler dimension"""
+        return self.__doppler_bins
+
+    @property
     def doppler_resolution(self):
+        """Doppler resolution in m/s"""
         _, bw = dsp.range_resolution(self.cfg['profiles'][0]['adcSamples'],
                                              self.cfg['profiles'][0]['adcSampleRate'] / 1000,
                                              self.cfg['profiles'][0]['freqSlopeConst'] / 1e12)
@@ -86,10 +101,22 @@ class RadarFrame(object):
 
     @property
     def max_unambiguous_doppler(self):
+        """Maximum unambiguous doppler in m/s.
+        In FMCW radar processing, aliasing will occur when the object's relative Doppler
+        is above this value.
+        i.e. if `max_unambiguous_doppler` is 10m/s, and the object is at 11 m/s, the computed doppler will be -9 m/s.
+        """
+        return self.doppler_resolution * self.doppler_bins / 2
         raise NotImplementedError
 
     @property
     def raw_cube(self):
+        """Raw radar data cube
+        Set the radar data cube using this property.
+        `rf.raw_cube = radar_cube`
+
+        This will clear all cached processed data like `range_cube`, `range_azimuth`, etc.
+        """
         return self.__raw_cube
 
     @raw_cube.setter
@@ -101,6 +128,9 @@ class RadarFrame(object):
 
     @property
     def range_cube(self):
+        """Get the radar data as a range cube.
+        Processing from the raw cube is done lazily on the first access to this property.
+        """
         if self.__range_cube is not None:
             return self.__range_cube
         else:
@@ -110,6 +140,9 @@ class RadarFrame(object):
 
     @property
     def range_doppler(self):
+        """Get the radar data as a range doppler cube.
+        Processing from the raw cube is done lazily on the first access to this property.
+        """
         if self.__range_doppler is not None:
             return self.__range_doppler
         else:
@@ -119,6 +152,7 @@ class RadarFrame(object):
 
     @property
     def range_azimuth_capon(self):
+        """Get the radar data as a range azimuth cube, beamformed using the Capon beamformer."""
         if not self.__range_azimuth_dirty:
             r = self.__range_azimuth
         else:
