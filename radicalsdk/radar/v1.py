@@ -152,7 +152,10 @@ class RadarFrame(object):
 
     @property
     def range_azimuth_capon(self):
-        """Get the radar data as a range azimuth cube, beamformed using the Capon beamformer."""
+        """Get the radar data as a range azimuth cube,
+        beamformed using the Capon beamformer.
+        This property is computed lazily on first access.
+        """
         if not self.__range_azimuth_dirty:
             r = self.__range_azimuth
         else:
@@ -174,7 +177,19 @@ class RadarFrame(object):
         self.__range_azimuth_dirty = False
 
     def compute_range_azimuth(self, radar_raw=None, method='capon'):
-        """Beamform raw radar datacube"""
+        """Beamform raw radar datacube
+        Use this method to set the the raw radar data cube and
+        perform beamforming. The beamformed data cube will be returned.
+
+        Currently only the capon method is implemented.
+
+        This is a convenience method that is equivalent to:
+        ```
+        # rf = RadarFrame(...)
+        rf.raw_cube = radar_raw
+        beamformed_datacube = rf.range_azimuth_capon
+        ```
+        """
         if radar_raw is not None:
             self.raw_cube = radar_raw
 
